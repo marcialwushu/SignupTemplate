@@ -1,12 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { URL_API } from '../../app/app.api';
+import { Usuario } from '../../model/usuario.model';
 
-/*
-  Generated class for the AuthServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AuthServiceProvider {
 

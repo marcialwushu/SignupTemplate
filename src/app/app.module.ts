@@ -8,6 +8,7 @@ import { SignupPage } from './../pages/signup/signup';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { IonicstorageProvider } from '../providers/ionicstorage/ionicstorage';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    IonicstorageProvider
   ]
 })
 export class AppModule {}
