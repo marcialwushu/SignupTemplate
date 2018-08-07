@@ -1,10 +1,10 @@
-import { SignupPage } from './../signup/signup';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { App, AlertController, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SignupPage } from '../signup/signup';
 
 
 //@IonicPage()
@@ -65,19 +65,24 @@ export class LoginPage {
   }
 
   alerta(msg: string): void {
-
+    let alert = this._alertCtrl.create({ message: `${msg}`, title: 'Falha', buttons: [{ text: 'Voltar!' }] });
+    alert.present();
   }
 
   goToInscricao(): void {
-
+    this.navCtrl.push(SignupPage);
   }
 
-  openLoad(msg: string) {
 
+  ///////////////////Alert Modal////////////////////////////////////////
+
+  openLoad(msg: string) {
+    this.load = this._loadingCtrl.create({ content: msg });
+    this.load.present();
   }
 
   closeLoad() {
-
+    this.load.dismiss();
   }
 
 }
