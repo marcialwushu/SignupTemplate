@@ -14,6 +14,7 @@ import { IonicstorageProvider } from '../providers/ionicstorage/ionicstorage';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { IonicStorageModule } from '@ionic/storage';
 import { DevedoresPage } from '../pages/devedores/devedores';
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DevedoresPage } from '../pages/devedores/devedores';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     IonicstorageProvider,
-    UsuarioServiceProvider
+    UsuarioServiceProvider,
+    RestProvider
   ]
 })
 export class AppModule {}
