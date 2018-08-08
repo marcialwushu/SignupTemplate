@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class IonicstorageProvider {
 
-  constructor(public http: HttpClient, private _storage: Storage) {
+  constructor(public http: HttpClientModule, private _storage: Storage) {
 
   }
   set(chave: string, valor: string){

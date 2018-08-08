@@ -1,6 +1,6 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { App, AlertController, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { AlertController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _app: App,
+    //private _app: App,
     public formBuildr: FormBuilder,
     private _authServ: AuthServiceProvider,
     private _loadingCtrl: LoadingController,

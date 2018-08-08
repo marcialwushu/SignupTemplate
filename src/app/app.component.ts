@@ -1,22 +1,66 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { AuthServiceProvider } from './../providers/auth-service/auth-service';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { DevedoresPage } from '../pages/devedores/devedores';
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+  rootPage:any = LoginPage;
+
+  pages: Array<{ title: string, component: any, icon?: string }>;
+
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private _auth: AuthServiceProvider,
+    //private _usuServ: UsuarioServiceProvider
+  ) {
+
+    this.initializeApp();
+
+
+  }
+
+  goToperfil() {
+    //TO DO
+    alert("Fazer pagina");
+  }
+
+  goToSair(){
+    this._auth.sair();
+    this.rootPage = LoginPage;
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this._auth.get().then((valor: any) => {
+        if (valor == undefined) {
+          this.rootPage = LoginPage;
+        } else {
+          this._auth.setarUsuario(JSON.parse(valor));
+          this.rootPage = DevedoresPage;
+        }
+      });
+
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+
     });
+  }
+
+  openPage(page) {
+    this.nav.setRoot(page.component);
   }
 }
 

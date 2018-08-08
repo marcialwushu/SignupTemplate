@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,22 +12,31 @@ import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { IonicstorageProvider } from '../providers/ionicstorage/ionicstorage';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
+import { IonicStorageModule } from '@ionic/storage';
+import { DevedoresPage } from '../pages/devedores/devedores';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    LoginPage,
+    DevedoresPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    LoginPage,
+    DevedoresPage
   ],
   providers: [
     StatusBar,
