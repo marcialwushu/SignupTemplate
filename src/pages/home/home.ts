@@ -1,8 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { RestProvider } from '../../providers/rest/rest';
-import { Http } from '@angular/http';
+
 
 
 @Component({
@@ -12,15 +13,19 @@ import { Http } from '@angular/http';
 export class HomePage {
 
   public pages = new Array<any>();
+  page;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public restProvider: RestProvider,
-    public http: Http
+    public http: HttpClientModule
 
   ) {
-
+    this.restProvider.getPage().subscribe( data => {
+      console.log(data);
+      this.page = data;
+    })
     this.getPages();
 
   }

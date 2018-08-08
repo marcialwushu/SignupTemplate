@@ -1,11 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      FGF WP-JSON
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button block (click)="onSignup()">Sign Up</button>
+
+  <ion-list>
+    <button ion-item *ngFor="let list of page">
+      {{ list?.title.rendered }}
+    </button>
+  </ion-list>
+
 </ion-content>
