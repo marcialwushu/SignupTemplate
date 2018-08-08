@@ -49,7 +49,7 @@ export class MyApp {
           this.rootPage = LoginPage;
         } else {
           this._auth.setarUsuario(JSON.parse(valor));
-          this.rootPage = DevedoresPage;
+          this.rootPage = LoginPage;
         }
       });
 
