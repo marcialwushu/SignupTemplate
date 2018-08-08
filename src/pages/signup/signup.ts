@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomePage } from '../home/home';
 
 
 
@@ -34,7 +36,26 @@ export class SignupPage {
 
 
   onSubmit(): void{
+    this.openLoad('Aguarde...');
+    this._authServ.registro(this.signupForm.value).subscribe((resultado: any) => {
+      this._authServ.criarUsuario(resultado);
+      this.navCtrl.setRoot(HomePage);
+    },
+      (erro: HttpErrorResponse) => {
+        console.log(erro.status);
 
+        console.log(erro.statusText);
+
+        console.log(erro.error);
+
+        console.log(erro.headers);
+        this.closeLoad();
+        let alert = this._alertCtrl.create({ message: `${erro.error.erro[0]}`, title: 'Falha', buttons: [{ text: 'Voltar!' }] });
+        alert.present();
+      }, () => {
+        this.closeLoad();
+      }
+    )
   }
 
   ///////Alert Modal//////////
