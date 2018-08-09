@@ -7,10 +7,17 @@ page-home {
   }
   .iongrid{
     background-color: white;
-    padding: 0%;
+    //padding: 0%;
+    margin-right: -5%;
+    margin-left:-5%;
 
   }
   .card{
     background-color: tan;
+
+  }
+  .test{
+    float: right;
+    text-align: center;
   }
 }
