@@ -1,12 +1,77 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      FGF WP-JSON
+  <ion-navbar color="primary">
+    <ion-title text-center>
+      ODOS Mobile
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="intro">
+
+  <div text-center>
+    <img src="../../assets/imgs/logo.png" style="width: 70%" />
+  </div>
+
+  <div class="iongrid">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-card class="card">
+
+            <ion-card-content>
+              <h1>
+                <ion-icon class="ins-icon" name="clock" color="primary"></ion-icon>
+              </h1>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card class="card">
+
+            <ion-card-content>
+              <h1>
+                <ion-icon class="ins-icon" name="camera" color="primary"></ion-icon>
+              </h1>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <ion-card class="card">
+
+            <ion-card-content>
+              <h1>
+                <ion-icon class="ins-icon" name="book" color="primary"></ion-icon>
+              </h1>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card class="card">
+
+            <ion-card-content >
+              <h1>
+                <ion-icon class="ins-icon" name="build" color="primary"></ion-icon>
+              </h1>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card *ngFor="let list of page">
+    <ion-card-content>
+      <p >
+        {{ list?.title.rendered }}
+      </p>
+    </ion-card-content>
+  </ion-card>
 
   <ion-list>
     <button ion-item *ngFor="let list of page">
