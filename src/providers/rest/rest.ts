@@ -19,4 +19,8 @@ export class RestProvider {
     return this.http.get(this.apiUrl + '/pages');
   }
 
+  getCategory(){
+    return this.http.get(this.apiUrl + '/posts?categories=218');
+  }
+
 }

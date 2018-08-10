@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { RestProvider } from '../../providers/rest/rest';
+import { DevedoresPage } from '../devedores/devedores';
 
 
 
@@ -14,6 +15,7 @@ export class HomePage {
 
   public pages = new Array<any>();
   page;
+  pushPage: any;
 
   constructor(
     public navCtrl: NavController,
@@ -22,11 +24,13 @@ export class HomePage {
     public http: HttpClientModule
 
   ) {
-    this.restProvider.getPage().subscribe( data => {
+    this.restProvider.getCategory().subscribe( data => {
       console.log(data);
       this.page = data;
     })
     this.getPages();
+
+    this.pushPage = DevedoresPage;
 
   }
 
@@ -42,5 +46,7 @@ export class HomePage {
       this.pages = this.pages.concat(response.results);
     })
   }
+
+
 
 }
